@@ -10,6 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('foo', function () {
+    return 'Hello World';
+});
+
 Route::group(['middleware' =>'guest'], function()
 {
 	Route::any('/', [
@@ -23,8 +28,14 @@ Route::post('/loginnow', "LoginController@loginnow");
 
 Route::view('/login', "login");
 
+Route::get('/user', 'UserController@create_user');
+
+Route::get('/loginnow', "LoginController@loginnow");
+
   
 });
+
+
 
 Route::get('/logout', "LoginController@logout");
 
@@ -44,6 +55,16 @@ Route::group(['middleware' =>'auth'], function()
       	'uses'=>'ViewController@getDeps',
       	'as'=> 'showDeps'
     ]);
+
+	  Route::get('/showCalendar', [
+      	'uses'=>'CalendarController@showCalen',
+      	'as'=> 'showCalendar'
+    ]);
+
+	 Route::get('/getEvent', ['as'=>'getEvent',
+    'uses'=>'CalendarController@get_Events'
+
+	]);
 
 	 Route::any('/chooseuser', "UserController@chooseuser_role");
 
@@ -70,6 +91,14 @@ Route::group(['middleware' =>'auth'], function()
 	 Route::any('/addpatient', "PatientController@addpatient");
 
 	 Route::post('/refer', "PatientController@refer");
+
+	 Route::any('/create_event', "CalendarController@create_event");
+
+	 Route::any('/add_event', "CalendarController@add_event");
+
+	// Route::get('/showCalendar/event', "CalendarController@get_Events");
+
+	
 
 
 });

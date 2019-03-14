@@ -31,7 +31,7 @@ class UserController extends Controller
 		}
 	}
 
-	public function create_user($id)
+	public function create_user($date)
 	{
 		$roles = User_roles::all();
 		$rolex = User_roles::find($id);

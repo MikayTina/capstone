@@ -1,7 +1,9 @@
 <footer class="sticky-footer">
-        <div class="container my-auto">
+	<br>
+	<br>
+       <!-- <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright © Capstone Project 2019</span>
           </div>
-        </div>
+        </div>-->
 </footer>

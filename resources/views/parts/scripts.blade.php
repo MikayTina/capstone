@@ -1,6 +1,15 @@
+
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+  <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
+
+     <script src="{{asset('vendor/fullcalendar/lib/jquery.min.js')}}"></script>
+    <script src="{{asset('vendor/fullcalendar/lib/jquery-ui.min.js')}}"></script>
+    <script src="{{asset('vendor/fullcalendar/lib/moment.min.js')}}"></script>
+
+   <script src="{{asset('vendor/fullcalendar/fullcalendar.min.js')}}"></script>
+
+  <!--<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>-->
   <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
   <!-- Core plugin JavaScript-->
@@ -17,7 +26,11 @@
 
   <!-- Demo scripts for this page-->
   <script src="{{asset('js/demo/datatables-demo.js')}}"></script>
+
   <script src="{{asset('js/demo/chart-area-demo.js')}}"></script>
+
+  <script src="{{asset('vendor/multi-select/js/jquery.multi-select.js')}}"></script>
+
 
    <script>
     $('#flash-overlay-modal').modal();
@@ -31,6 +44,7 @@
   
   </script>
 
+  @yield('script')
 
 <script> 
   
@@ -75,6 +89,11 @@
 
     modal.find('.modal-body #role').val(role);
   })
+
+
+
+    
+ 
 
   $(function() {
   $('input[id="case"]').on('click', function(){

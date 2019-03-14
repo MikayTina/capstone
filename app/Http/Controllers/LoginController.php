@@ -41,14 +41,19 @@ class LoginController extends Controller
         'password'=>'required'
       ]);
 
+
        $roles = User_roles::all();
        $deps = Departments::all();
 
+        //var_dump($request->input('password'));
       if(Auth::attempt(['username'=>$request->input('username'), 'password'=>$request->input('password')]))
+      // if(Auth::attempt(['username'=>'michaela.camson@gmail.com', 'password'=>'password']))
         {
-          return redirect()->route('user.dashboard')->with('roles',$roles)->with('deps',$deps);
+         // return redirect()->route('user.dashboard')->with('roles',$roles)->with('deps',$deps);
+          return redirect()->route('user.dashboard')->with('roles', $roles)->with('deps',$deps);
         }
         else{
+         
           $errors = new MessageBag(['password' => ['Username and/or password invalid.']]);
            return Redirect::back()->withErrors($errors)->withInput(Input::except('password'));
         }
@@ -79,6 +84,7 @@ class LoginController extends Controller
 
     public function getProfile(request $request)
     {
+      //var_dump($request); exit;
       $roles = User_roles::all();
       $deps = Departments::all();
 

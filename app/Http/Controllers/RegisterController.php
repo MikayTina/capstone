@@ -42,6 +42,30 @@ class RegisterController extends Controller
         
     }
 
+     public function registernow2(request $request)
+    {
+        $user = new Users([
+            'fname' => $request->input('fname'),
+            'lname' => $request->input('lname'),
+            'username' => $request->input('username'),
+            'password' => Hash::make($request->input('password')),
+            'contact' => $request->input('contact'),
+            'email' => $request->input('email'),
+            'role' => $request->input('roleid'),
+            'department' => $request->input('department')
+        ]);
+
+        $user->save();
+
+        Session::flash('alert-class', 'success'); 
+        flash('User Created', '')->overlay();
+
+        $roles = User_roles::all();
+        $deps = Departments::all();
+       return view('superadmin.chooseuser')->with('roles',$roles)->with('deps',$deps);
+        
+    }
+
     public function register_role(request $request)
     {
         $role = new User_roles([

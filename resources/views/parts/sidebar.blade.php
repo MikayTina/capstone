@@ -13,7 +13,7 @@
         @if(Auth::user()->role == 1)
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           @foreach($roles as $role)
-            @if($role->id != 1)
+            @if($role->id != 2)
           <a class="dropdown-item" href="{{ route('showUsers',$role->id) }}">{{$role->name}}s</a>
           @endif
           @endforeach
@@ -38,6 +38,11 @@
           <a class="dropdown-item" href="{{ route('showDeps',$dep->id) }}">{{$dep->department_name}}</a>
          @endforeach
         </div>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{{URL::to('/showCalendar')}}">
+          <i class="fas fa-fw fa-user"></i>
+          <span>Calendar</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="charts.html">
