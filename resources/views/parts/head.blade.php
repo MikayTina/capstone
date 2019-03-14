@@ -17,4 +17,6 @@
   <!-- Custom styles for this template-->
   <link href="{{asset('css/sb-admin.css')}}" rel="stylesheet">
 
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
 </head>  

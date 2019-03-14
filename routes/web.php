@@ -43,7 +43,7 @@ Route::group(['middleware' =>'auth'], function()
 	  Route::get('showDeps/{id}', [
       	'uses'=>'ViewController@getDeps',
       	'as'=> 'showDeps'
-    ]);
+    ]); 
 
 	 Route::any('/chooseuser', "UserController@chooseuser_role");
 
@@ -71,5 +71,22 @@ Route::group(['middleware' =>'auth'], function()
 
 	 Route::post('/refer', "PatientController@refer");
 
+	 Route::any('/showpatients', "PatientController@showpatient");
+
+	 Route::get('/viewpatient/{id}', "PatientController@viewpatient");
+
+	 Route::any('/patient_dep', "PatientController@patientdep");
+
+	 Route::get('/choosef/{id}', "PatientController@chooseform");
+
+	 Route::get('/intakeform/{id}', "PatientController@intakeform");
+
+	 Route::get('/ddeform/{id}', "PatientController@ddeform");
+
+	 Route::post('/patientsave_intake', "PatientController@save_intake");
+
+	 Route::post('/patientsave_dde', "PatientController@save_dde");
+
+	 Route::post('/deletepatient', "PatientController@flagdelete");
 
 });

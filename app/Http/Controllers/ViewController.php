@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+ 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Notifications\Notifiable;
+use App\Notifications\MyNotifications;
 use Auth;
 use DB;
 use App\Users;
@@ -22,7 +24,7 @@ class ViewController extends Controller
    {
    	
    	$rolex = User_roles::find($id);
-      $urole = DB::table('users')->where('role',$id)->get();
+      $urole = Users::where('role',$id)->with('user_departments')->with('user_roles')->get();
    	$roles = User_roles::all();
    	$deps = Departments::all();
 

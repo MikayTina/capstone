@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\MessageBag;
+use Illuminate\Notifications\Notifiable;
+use App\Notifications\MyNotifications;
 use Auth;
 use DB;
 use App\Users;
@@ -77,16 +79,20 @@ class LoginController extends Controller
       return redirect()->route('login')->with('roles',$roles);
     }
 
-    public function getProfile(request $request)
+    public function getProfile()
     {
       $roles = User_roles::all();
       $deps = Departments::all();
+      $users = Users::find(Auth::user()->id);
 
-      if(Auth::user()->role == 1){
-        return view('superadmin.index')->with('roles',$roles)->with('deps',$deps);
+      if(Auth::user()->user_role()->first()->name == 'Superadmin'){
+        return view('superadmin.index')->with('roles',$roles)->with('deps',$deps)->with('users',$users);
       }
-      else if(Auth::user()->role == 2){
-         return view('admin.index')->with('roles',$roles)->with('deps',$deps);
+      else if(Auth::user()->user_role()->first()->name == 'Admin'){
+         return view('admin.index')->with('roles',$roles)->with('deps',$deps)->with('tuser',$tuser);
+      }
+      else if(Auth::user()->user_role()->first()->name == 'Social Worker'){
+         return view('socialworker.index')->with('roles',$roles)->with('deps',$deps);
       }
     }
 }
