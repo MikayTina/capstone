@@ -92,8 +92,20 @@
 
 
 
+
     
  
+
+  $('#deletePatient').on('show.bs.modal', function (event) {
+
+    var button = $(event.relatedTarget)
+
+    var patientid = button.data('patientid')
+    var modal = $(this)
+
+    modal.find('.modal-body #patientid').val(patientid);
+  })
+
 
   $(function() {
   $('input[id="case"]').on('click', function(){

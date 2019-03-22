@@ -23,11 +23,14 @@ class UserController extends Controller
 		$roles = User_roles::all();
 		$deps = Departments::all();
 
-		if(Auth::user()->role == 1){
+		if(Auth::user()->user_role()->first()->name == 'Superadmin'){
 			return view('superadmin.chooseuser')->with('roles',$roles)->with('deps',$deps);
 		}
-		elseif(Auth::user()->role == 2){
+		elseif(Auth::user()->user_role()->first()->name == 'Admin'){
 			return view('admin.chooseuser')->with('roles',$roles)->with('deps',$deps);
+		}
+		else{
+			return abort(404);
 		}
 	}
 
@@ -37,7 +40,15 @@ class UserController extends Controller
 		$rolex = User_roles::find($id);
 		$deps = Departments::all();
 
-		return view('superadmin.createuser')->with('roles',$roles)->with('deps',$deps)->with('rolex',$rolex);
+		if(Auth::user()->user_role()->first()->name == 'Superadmin'){
+			return view('superadmin.createuser')->with('roles',$roles)->with('deps',$deps)->with('rolex',$rolex);
+		}
+		elseif(Auth::user()->user_role()->first()->name == 'Admin'){
+			return view('admin.createuser')->with('roles',$roles)->with('deps',$deps)->with('rolex',$rolex);
+		}
+		else{
+			return abort(404);
+		}
 	}
 
 	public function createuserrole()
@@ -45,11 +56,11 @@ class UserController extends Controller
 		$roles = User_roles::all();
 		$deps = Departments::all();
 
-		if(Auth::user()->role == 1){
+		if(Auth::user()->user_role()->first()->name == 'Superadmin'){
 			return view('superadmin.createrole')->with('roles',$roles)->with('deps',$deps);
 		}
 		else{
-			return redirect()->route('user.dashboard')->with('roles',$roles)->with('deps',$deps);
+			return abort(404);
 		}
 	}
 
@@ -58,11 +69,11 @@ class UserController extends Controller
 		$roles = User_roles::all();
 		$deps = Departments::all();
 
-		if(Auth::user()->role == 1){
-			return view('superadmin.postcreatedep')->with('roles',$roles)->with('deps' ,$deps);
+		if(Auth::user()->user_role()->first()->name == 'Superadmin'){
+			return view('superadmin.postcreatedep')->with('roles',$roles)->with('deps',$deps);
 		}
 		else{
-			return redirect()->route('user.dashboard')->with('roles',$roles)->with('deps',$deps);
+			return abort(404);
 		}
 	}
 
@@ -71,11 +82,11 @@ class UserController extends Controller
 		$roles = User_roles::all();
 		$deps = Departments::all();
 
-		if(Auth::user()->role == 1){
-			return view('superadmin.createdep')->with('roles',$roles)->with('deps' ,$deps);
+		if(Auth::user()->user_role()->first()->name == 'Superadmin'){
+			return view('superadmin.createdep')->with('roles',$roles)->with('deps',$deps);
 		}
 		else{
-			return redirect()->route('user.dashboard')->with('roles',$roles)->with('deps',$deps);
+			return abort(404);
 		}
 	}
 

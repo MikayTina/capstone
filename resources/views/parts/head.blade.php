@@ -20,10 +20,13 @@
   <link href="{{asset('css/sb-admin.css')}}" rel="stylesheet">
 
 
+
   <link href="{{asset('vendor/fullcalendar/fullcalendar.min.css')}}" rel="stylesheet" type="text/css">
 
  <link href="{{asset('vendor/multi-select/css/multi-select.css')}}" media="screen" rel="stylesheet" type="text/css">
 
 
+
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>  

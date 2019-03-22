@@ -1,11 +1,11 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+<nav class="navbar navbar-expand navbar-dark bg-dark sticky-top">
 
    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
     </button> 
       <a class="navbar-brand" href="{{URL::to('/profile')}}">
           <img style="height:60px;margin-top: 5px;margin-right: 0px;" src="{{asset('images/logo3.png')}}" alt="">
-          <a class="navbar-brand mr-1" href="{{URL::to('/profile')}}">Cebu Treatment and Rehabilitation Center for Females</a>
+          <a class="navbar-brand mr-1" href="{{URL::to('/profile')}}"><h5>Treatment and Rehabilitation Center for Females - Cebu</h5></a>
         </a>  
     
     <!-- Navbar Search 
@@ -22,7 +22,7 @@
 
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0">
-      <p style="color:white;margin-top: 12px;font-size: 15px;">Welcome {{Auth::user()->fname}}!</p>
+      <p style="color:white;margin-top: 12px;font-size: 15px;">Welcome {{Auth::user()->fname}} ({{Auth::user()->user_role()->first()->name}})</p>
       <!--<li class="nav-item dropdown no-arrow mx-1">
         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-bell fa-fw"></i>
