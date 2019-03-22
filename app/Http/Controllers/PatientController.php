@@ -22,7 +22,6 @@ use App\Emergency_Persons;
 use App\Patient_Intake_Information;
 use App\Patient_Informant;
 use App\Patient_Information;
->>>>>>> e58c6c9ea103d8a7e8efec55a02179741b7dbbaa
 use Hash;
 use Session;
 

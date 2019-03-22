@@ -1,7 +1,7 @@
 @extends('main')
 @section('content')
         <!-- Breadcrumbs-->
-        @if(Auth::user()->user_role()->first()->name == 'Superadmin')
+      @if(Auth::user()->user_role()->first()->name == 'Superadmin')
         <ol class="breadcrumb" style="height: 100px;font-size:50px;text-align: center">
           <li class="breadcrumb-item active" style="margin-left: 400px"><i class="fas fa-fw fa fa-user"></i>{{Auth::user()->user_role()->first()->name}}</li>
         </ol>
@@ -16,7 +16,7 @@
         @endif
 
         <!-- Icon Cards-->
-        <div class="row" style="margin-left: 10px;margin-bottom: 50px">
+       <div class="row" style="margin-left: 10px;margin-bottom: 50px">
           <div class="col-xl-3 col-sm-4 mb-10" style="height: 18rem;">
             <div class="card border-dark mb-3 text-black o-hidden h-100">
               <div class="card-body">
@@ -48,7 +48,7 @@
             <div class="card border-dark mb-3 text-black o-hidden h-100">
               <div class="card-header">Notifications</div>
               <div class="card-body" style="margin-left: 80px">
-            
+          
               @if(Auth::user()->user_role()->first()->name == 'Superadmin')
                 @foreach($users->notifications as $user)
                   <p>{{$user->data['fname']}} {{$user->data['lname']}} has been created</p>
@@ -61,3 +61,5 @@
           </div>
         </div>
 @endsection
+
+

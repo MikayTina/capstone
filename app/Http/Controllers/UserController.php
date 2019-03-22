@@ -125,4 +125,20 @@ class UserController extends Controller
         return back();
 	}
 
+	public function showintervention()
+     {
+
+    
+        $roles = User_roles::all();
+        $deps = Departments::all();
+
+        if(Auth::user()->user_role()->first()->name == 'Superadmin'){
+            return view('intervention.viewIntervention')->with('roles',$roles)->with('deps',$deps);
+        }
+        else{
+            return abort(404);
+        }
+
+    }
+
 }

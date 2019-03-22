@@ -70,7 +70,7 @@ Route::group(['middleware' =>'auth'], function()
 
 	 Route::any('/createuserrole', "UserController@createuserrole");
 
-	 Route::get('/create_user/{id}', "UserController@create_user");
+	 Route::get('/create_user', "UserController@create_user");
 
 	 Route::any('/create_dep', "UserController@postcreate_dep");
 
@@ -97,7 +97,7 @@ Route::group(['middleware' =>'auth'], function()
 
 	 Route::any('/add_event', "CalendarController@add_event");
 
-	// Route::get('/showCalendar/event', "CalendarController@get_Events");
+	 Route::get('/view_event/{id}', "CalendarController@viewevent");
 
 	
 
@@ -119,6 +119,12 @@ Route::group(['middleware' =>'auth'], function()
 	 Route::post('/patientsave_dde', "PatientController@save_dde");
 
 	 Route::post('/deletepatient', "PatientController@flagdelete");
+
+	 Route::any('/add_intervention', "InterventionController@addintervention");
+
+	 Route::any('/showIntervention', "InterventionController@showintervention");
+
+
 
 
 });

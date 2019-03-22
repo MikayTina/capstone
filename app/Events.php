@@ -8,5 +8,5 @@ class Events extends Model
 {
     //
     //public $table = "events";
-    protected $fillable = ['title','venue','start','end'];
+    protected $fillable = ['title','venue','start','end', 'date', 'start_time', 'end_time'];
 }

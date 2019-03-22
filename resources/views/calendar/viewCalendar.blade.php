@@ -33,20 +33,27 @@
 		    
 
       $("#calendar").fullCalendar({
+
+
       header: {
         left: 'prev,next today',
         center: 'title',
-        right: 'month,agendaWeek,agendaDay,listWeek'
+        right: 'month,agendaWeek,listWeek'
       },
+
+      eventTextColor: '#FFFFFF',
+
+
 
       minTime: "06:00:00",
       maxTime: "20:00:00",
       events: evt,
-      textColor: 'white',
 
-      dayClick: function(date, jsEvent, view, resourceObj) {
+      dayClick: function(date, end, jsEvent, view, resourceObj) {
 
+               var current_date = moment().format('YYYY-MM-DD')
 
+              if(current_date <= date.format()) {
                var r = confirm('Do you want to plot on this date ' + date.format());
 
                 if(r== true){
@@ -55,13 +62,30 @@
 
                   window.location.href=base;
                 }
-        
+            
+            }
         },
+
+       dayRender: function(date, cell){
+
+             var current_date = moment().format('YYYY-MM-DD');
+
+              if(current_date > date.format()) {
+
+                  cell.css("background", "#e8e8e8");
+              }
+       
+      },
 
       
        eventClick: function(calEvent, jsEvent, view) {
 
-          var er = confirm('Do you want to plot on this date ');
+              var id = calEvent.id;
+
+                var url = '{{ URL::to('/view_event') }}'+'/'+id;
+
+                window.location.href=url;
+
        }
 
     });

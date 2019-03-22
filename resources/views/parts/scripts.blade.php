@@ -1,11 +1,15 @@
 
 
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
+
 
      <script src="{{asset('vendor/fullcalendar/lib/jquery.min.js')}}"></script>
     <script src="{{asset('vendor/fullcalendar/lib/jquery-ui.min.js')}}"></script>
     <script src="{{asset('vendor/fullcalendar/lib/moment.min.js')}}"></script>
+
+          <script src="{{asset('vendor/multi-select/js/jquery.multi-select.js')}}"></script>
 
    <script src="{{asset('vendor/fullcalendar/fullcalendar.min.js')}}"></script>
 
@@ -29,7 +33,8 @@
 
   <script src="{{asset('js/demo/chart-area-demo.js')}}"></script>
 
-  <script src="{{asset('vendor/multi-select/js/jquery.multi-select.js')}}"></script>
+ <script src="{{asset('vendor/duallistbox/dist/jquery.bootstrap-duallistbox.min.js')}}"></script>
+
 
 
    <script>
