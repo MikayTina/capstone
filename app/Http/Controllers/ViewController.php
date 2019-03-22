@@ -27,12 +27,13 @@ class ViewController extends Controller
       $urole = Users::where('role',$id)->with('user_departments')->with('user_roles')->get();
    	$roles = User_roles::all();
    	$deps = Departments::all();
+      $users = Users::find(Auth::user()->id);
 
-      if(Auth::user()->role == 1){
-   	  return view('superadmin.showusers')->with('rolex',$rolex)->with('deps',$deps)->with('roles',$roles)->with('urole' ,$urole);
+      if(Auth::user()->user_role()->first()->name == 'Superadmin'){
+   	  return view('superadmin.showusers')->with('rolex',$rolex)->with('deps',$deps)->with('roles',$roles)->with('urole' ,$urole)->with('users',$users);
       }
-      elseif(Auth::user()->role == 2){
-         return view('admin.showusers')->with('rolex',$rolex)->with('deps',$deps)->with('roles',$roles)->with('urole' ,$urole);
+      elseif(Auth::user()->user_role()->firat()->name == 'Admin'){
+         return view('admin.showusers')->with('rolex',$rolex)->with('deps',$deps)->with('roles',$roles)->with('urole' ,$urole)->with('users',$users);
       }
    }
 
@@ -42,7 +43,8 @@ class ViewController extends Controller
    	$depsx = Departments::find($id);
    	$roles = User_roles::all();
    	$deps = Departments::all();
+      $users = Users::find(Auth::user()->id);
 
-   	return view('superadmin.showdeps')->with('depsx',$depsx)->with('deps',$deps)->with('roles',$roles);
+   	return view('superadmin.showdeps')->with('depsx',$depsx)->with('deps',$deps)->with('roles',$roles)->with('users',$users);
    }
 }

@@ -1,5 +1,5 @@
 <ul class="sidebar navbar-nav" style="">
-      <li class="nav-item active">
+      <li class="nav-item active" style="margin-top: 10px">
         <a class="nav-link" href="{{URL::to('/profile')}}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span>
@@ -40,12 +40,22 @@
          @endforeach
         </div>
       </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{{URL::to('/showpatients')}}">
+          <i class="fas fa-fw fa-users"></i>
+          <span>Employees</span></a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="{{URL::to('/showpatients')}}">
           <i class="fas fa-fw fa-user"></i>
           <span>Patients</span></a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="{{URL::to('/showCalendar')}}">
+          <i class="fas fa-fw fa-calendar"></i>
+          <span>Calendar</span></a>
+      </li>
+      <li class="nav-item" style="">
         <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Reports</span></a>

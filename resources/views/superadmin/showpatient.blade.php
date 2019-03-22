@@ -1,5 +1,15 @@
 @extends('main')
 @section('content')
+
+<style>
+
+  th {
+  text-align: inherit;
+  background-color: #212529;
+  color:white;
+  }
+
+</style>
  
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">

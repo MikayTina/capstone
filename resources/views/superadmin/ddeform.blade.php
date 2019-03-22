@@ -86,7 +86,7 @@
               <div class="col-md-3">
                 <div class="form-label-group">
                    <h6>Contact no.*</h6>
-                  <input type="text" id="contact" class="form-control" placeholder="Contact No." required="required" name="contact">
+                  <input type="tel" id="contact" class="form-control" placeholder="Contact No." required="required" name="contact">
                   <input type="hidden" name="_token" value="{{csrf_token()}}">
                   <input type="hidden" name="department" value="{{$id}}">
               </div>
@@ -130,7 +130,7 @@
               </div>
             </div>
           </div>
-        </fieldset>
+        </fieldset> 
         <fieldset>
         <legend style="color:white;text-indent: 20px;width:1100px;margin-bottom: 20px" class="bg bg-dark">General Information</legend>
         <div class="container border border-gray" style="margin-bottom: 20px;margin-top: 10px">

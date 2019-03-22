@@ -36,6 +36,6 @@ class User extends Authenticatable
 
     public function user_department()
     {
-        return $this->belongsTo('App\Departments', 'department')->where('id',Auth::user()->department)->get();
+        return $this->belongsTo('App\Departments', 'department');
     }
 }

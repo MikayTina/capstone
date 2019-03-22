@@ -15,6 +15,7 @@ use DB;
 use App\Users;
 use App\User_roles;
 use App\Departments;
+use App\Transfer_Requests;
 use Notification;
 use Hash;
 use Session;
@@ -23,9 +24,10 @@ class RegisterController extends Controller
 {
     public function registernow(request $request)
     {
-
+        $id = rand();
 
     	$user = new Users([
+            'user_id' => $id,
     		'fname' => $request->input('fname'),
     		'lname' => $request->input('lname'),
     		'username' => $request->input('username'),
@@ -36,7 +38,19 @@ class RegisterController extends Controller
     		'department' => $request->input('department')
     	]);
 
-    	$user->save();
+
+        $user->save();
+
+        $users = Users::where('user_id',$id)->with('user_departments')->with('user_roles')->get();
+
+        foreach($users as $usz)
+        {
+            
+        }
+
+        $allusers = Users::all();
+
+        Notification::send($allusers, new MyNotifications($usz));
 
     	Session::flash('alert-class', 'success'); 
 		flash('User Created', '')->overlay();
@@ -45,16 +59,14 @@ class RegisterController extends Controller
         $deps = Departments::all();
         $rolex = User_roles::find($request->input('roleid'));
         $urole = Users::where('role',$request->input('roleid'))->with('user_departments')->with('user_roles')->get();
-
-        $allusers = Users::all();
-        
-        Notification::send($allusers, new MyNotifications($user));
+        $users = Users::find(Auth::user()->id);
+        $transfer = Transfer_Requests::all();
 
         if(Auth::user()->user_role()->first()->name == 'Superadmin'){
-            return view('superadmin.showusers')->with('roles',$roles)->with('deps',$deps)->with('rolex',$rolex)->with('urole' ,$urole);
+            return view('superadmin.showusers')->with('roles',$roles)->with('deps',$deps)->with('rolex',$rolex)->with('urole' ,$urole)->with('users',$users)->with('transfer',$transfer);
         }
         else if (Auth::user()->user_role()->first()->name == 'Admin'){
-            return view('admin.showusers')->with('roles',$roles)->with('deps',$deps)->with('rolex',$rolex)->with('urole' ,$urole);
+            return view('admin.showusers')->with('roles',$roles)->with('deps',$deps)->with('rolex',$rolex)->with('urole' ,$urole)->with('users',$users)->with('transfer',$transfer);
         }
     }
 
@@ -74,12 +86,14 @@ class RegisterController extends Controller
 
 		$roles = User_roles::all();
         $deps = Departments::all();
+        $users = Users::find(Auth::user()->id);
+        $transfer = Transfer_Requests::all();
 
         if(Auth::user()->user_role()->first()->name == 'Superadmin'){
-            return view('superadmin.chooseuser')->with('roles',$roles)->with('deps',$deps);
+            return view('superadmin.chooseuser')->with('roles',$roles)->with('deps',$deps)->with('users',$users)->with('transfer',$transfer);
         }
         else if(Auth::user()->user_role()->first()->name == 'Admin'){
-            return view('admin.chooseuser')->with('roles',$roles)->with('deps',$deps);
+            return view('admin.chooseuser')->with('roles',$roles)->with('deps',$deps)->with('users',$users)->with('transfer',$transfer);
         }
     }
 
@@ -99,12 +113,14 @@ class RegisterController extends Controller
 
 		$roles = User_roles::all();
         $deps = Departments::all();
+        $users = Users::find(Auth::user()->id);
+        $transfer = Transfer_Requests::all();
 
       if(Auth::user()->user_role()->first()->name == 'Superadmin'){
-        return view('superadmin.postcreatedep')->with('roles',$roles)->with('deps',$deps);
+        return view('superadmin.postcreatedep')->with('roles',$roles)->with('deps',$deps)->with('users',$users)->with('transfer',$transfer);
       }
       elseif(Auth::user()->user_role()->first()->name == 'Admin'){
-        return view('admin.postcreatedep')->with('roles',$roles)->with('deps',$deps);
+        return view('admin.postcreatedep')->with('roles',$roles)->with('deps',$deps)->with('users',$users)->with('transfer',$transfer);
       }
     }
 
