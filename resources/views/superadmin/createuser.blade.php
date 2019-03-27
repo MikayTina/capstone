@@ -57,14 +57,14 @@
             </div>
           </div>
           <div class="form-group">
+          <div class="form-row">
+            <div class="col-md-6">
             <div class="form-label-group">
               <input type="email" id="email" class="form-control" placeholder="Email address" required="required" name="email">
               <label for="email" value="{{ old('email') }}">Email address</label>
             </div>
-          </div>
-          <div class="form-group">
-            <div class="form-row">
-              <div class="col-md-6">
+            </div>
+             <div class="col-md-6">
                 <div class="form-label-group">
                   <input type="text" id="contact" class="form-control" placeholder="Contact No." required="required" name="contact" value="{{ old('contact') }}">
                   <label for="contact">Contact no.</label>
@@ -72,7 +72,11 @@
                   <input type="hidden" name="_token" value="{{csrf_token()}}">
               </div>
               </div>
-              @if($rolex->id == 2)
+          </div>
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+              @if($rolex->name == 'Admin')
               <div class="col-md-6">
                 <div class="form-label-group">
                  <input type="hidden" name="deparment" value="0">
@@ -88,6 +92,20 @@
                   @endforeach
                     <option value="0">None</option>
                 </select>
+                </div>
+              </div>
+              @endif
+              @if($rolex->name != 'Admin')
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" id="designation" class="form-control" placeholder="Designation" required="required" name="designation">
+                  <label for="designation">Designation/Position</label>
+                </div>
+              </div>
+              @else
+               <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="hidden" id="designation" class="form-control" placeholder="Designation" required="required" name="designation" value="">
                 </div>
               </div>
               @endif

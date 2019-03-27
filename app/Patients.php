@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
 class Patients extends Model
-{
+{ 
 
     use Notifiable;
     
 	protected $fillable = [
-		'patient_id','fname','lname','mname','age','birthdate','birthorder','address_id','contact','gender','civil_status','nationality','religion','case','submission','department_id','flag',
+		'patient_id','fname','lname','mname','age','birthdate','birthorder','address_id','contact','gender','civil_status','nationality','religion','case','submission','date_admitted','department_id','flag',
 	];
 
 	 public function departments()

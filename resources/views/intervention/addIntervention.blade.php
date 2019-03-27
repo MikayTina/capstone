@@ -25,6 +25,7 @@
       @endif
         <form action="{{URL::to('/create_intervention')}}" method="post">
           {{csrf_field()}}
+<<<<<<< HEAD
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-12">
@@ -51,6 +52,33 @@
               <label for="interdesc">Description</label>
             </div>
           </div>
+=======
+
+            <div class="form-group">         
+                  <div class="form-label-group">
+                    <h6>Parent Intervention</h6>
+                   <select class="form-control" id="parent" placeholder="Civil Status" name="parent">
+                        <option value="0">--NONE--</option>
+                       @foreach($inter as $interven)
+                          <option value="{{ $interven->id }}">{{ $interven->interven_name }}</option>
+                        @endforeach
+                  </select>
+                  </div>
+                </div>
+             <div class="form-group">
+                  <div class="form-label-group">
+                    <h6>Name</h6>
+                      <input type="text" id="name" class="form-control" placeholder="Name" required="required" name="name">
+                  </div>
+                </div>
+             <div class="form-group">
+            <div class="form-label-group">
+               <h6>Description</h6>
+              <input style="height:100px;" type="textbox" id="descrpt" class="form-control" placeholder="Description" required="required" name="descrpt">
+            </div>
+          </div>
+
+>>>>>>> 600cab594feb8db6b13cf6bbc56dd8a801ec984c
            <input class="btn btn-primary btn-block" type="submit" name="submit" value="Create">
         </form>
       </div>

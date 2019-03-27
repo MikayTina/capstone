@@ -1,7 +1,13 @@
 @extends('main')
 @section('content')
         <!-- Breadcrumbs-->
+<<<<<<< HEAD
       @if(Auth::user()->user_role()->first()->name == 'Superadmin')
+=======
+
+      
+        @if(Auth::user()->user_role()->first()->name == 'Superadmin')
+>>>>>>> 600cab594feb8db6b13cf6bbc56dd8a801ec984c
         <ol class="breadcrumb" style="height: 100px;font-size:50px;text-align: center">
           <li class="breadcrumb-item active" style="margin-left: 400px"><i class="fas fa-fw fa fa-user"></i>{{Auth::user()->user_role()->first()->name}}</li>
         </ol>

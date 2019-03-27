@@ -27,7 +27,11 @@ use App\Patient_Intake_Information;
 use App\Patient_Informant;
 use App\Patient_Information;
 use App\Transfer_Requests;
+<<<<<<< HEAD
 use App\Patient_Event_List;
+=======
+use App\Patient_History;
+>>>>>>> 600cab594feb8db6b13cf6bbc56dd8a801ec984c
 use Notification;
 use Hash;
 use Session;
@@ -46,7 +50,7 @@ class PatientController extends Controller
         $users = Users::find(Auth::user()->id);
         $transfer = Transfer_Requests::all();
 
-    	return view('superadmin.addpatient')->with('roles',$roles)->with('deps',$deps)->with('users',$users)->with('transfer',$transfer);
+    	return view('superadmin.addpatient')->with('roles',$roles)->with('deps',$departmentsps)->with('users',$users)->with('transfer',$transfer);
     }
 
     public function refer()
@@ -76,7 +80,15 @@ class PatientController extends Controller
         $users = Users::find(Auth::user()->id);
         $transfer = Transfer_Requests::all();
 
-        return view('superadmin.showpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('transfer',$transfer);
+        if(Auth::user()->user_role()->first()->name == 'Superadmin'){
+            return view('superadmin.showpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('transfer',$transfer);
+        }
+        else if(Auth::user()->user_role()->first()->name == 'Admin'){
+            return view('admin.showpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('transfer',$transfer);
+        }
+        else if(Auth::user()->user_role()->first()->name == 'Social Worker'){
+            return view('socialworker.showpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('transfer',$transfer);
+        }
     }
 
     public function viewpatient($id)
@@ -90,10 +102,12 @@ class PatientController extends Controller
 
         $users = Users::find(Auth::user()->id);
         $transfer = Transfer_Requests::all();
+        $history = Patient_History::where('patient_id',$id)->get();
 
         $notif = DB::table('notifications')->where('notifiable_id',Auth::user()->id)->update(['read_at' => date('Y-m-d')]);
 
         if(Auth::user()->user_role()->first()->name == 'Superadmin'){
+<<<<<<< HEAD
             return view('superadmin.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfer',$transfer)->with('refers', $refer)->with('evts', $events);
         }
         else if(Auth::user()->user_role()->first()->name == 'Admin'){
@@ -101,6 +115,15 @@ class PatientController extends Controller
         }
         else if(Auth::user()->user_role()->first()->name == 'Social Worker'){
             return view('socialworker.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfer',$transfer)->with('refers', $refer)->with('evts', $events);
+=======
+            return view('superadmin.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfer',$transfer)->with('history',$history);
+        }
+        else if(Auth::user()->user_role()->first()->name == 'Admin'){
+            return view('admin.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfer',$transfer)->with('history',$history);
+        }
+        else if(Auth::user()->user_role()->first()->name == 'Social Worker'){
+            return view('socialworker.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfer',$transfer)->with('history',$history);
+>>>>>>> 600cab594feb8db6b13cf6bbc56dd8a801ec984c
         }
 
     }
@@ -113,17 +136,17 @@ class PatientController extends Controller
         $users = Users::find(Auth::user()->id);
         $transfers = Transfer_Requests::where('transfer_id',$tid)->get();
         $transfer = Transfer_Requests::all();
+        $history = Patient_History::where('patient_id',$id)->get();
 
-        $notif = DB::table('notifications')->where('id',$pid)->update(['read_at' => date('Y-m-d')]);
 
         if(Auth::user()->user_role()->first()->name == 'Superadmin'){
-            return view('superadmin.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfers',$transfers)->with('transfer',$transfer);
+            return view('superadmin.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfers',$transfers)->with('transfer',$transfer)->with('history',$history);
         }
         else if(Auth::user()->user_role()->first()->name == 'Admin'){
-            return view('admin.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfers',$transfers)->with('transfer',$transfer);
+            return view('admin.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfers',$transfers)->with('transfer',$transfer)->with('history',$history);
         }
         else if(Auth::user()->user_role()->first()->name == 'Social Worker'){
-            return view('socialworker.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfers',$transfers)->with('transfer',$transfer);
+            return view('socialworker.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfers',$transfers)->with('transfer',$transfer)->with('history',$history);
         }
     }
 
@@ -135,17 +158,18 @@ class PatientController extends Controller
         $deps = Departments::all();
         $users = Users::find(Auth::user()->id);
         $transfer = Transfer_Requests::all();
+        $history = Patient_History::where('patient_id',$id)->get();
 
         $notif = DB::table('notifications')->where('id',$nid)->update(['read_at' => date('Y-m-d')]);
 
         if(Auth::user()->user_role()->first()->name == 'Superadmin'){
-            return view('superadmin.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfer',$transfer);
+            return view('superadmin.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfer',$transfer)->with('history',$history);
         }
         else if(Auth::user()->user_role()->first()->name == 'Admin'){
-            return view('admin.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfer',$transfer);
+            return view('admin.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfer',$transfer)->with('history',$history);
         }
         else if(Auth::user()->user_role()->first()->name == 'Social Worker'){
-            return view('socialworker.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfer',$transfer);
+            return view('socialworker.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfer',$transfer)->with('history',$history);
         }
     }
 
@@ -227,6 +251,7 @@ class PatientController extends Controller
             $address_id = $adds->id;
         }
 
+        date_default_timezone_set('Asia/Singapore');
 
         $patient = new Patients([
             'patient_id' => $pat,
@@ -237,6 +262,7 @@ class PatientController extends Controller
             'birthdate' => $request->input('bday'),
             'civil_status' => $request->input('civils'),
             'address_id' => $address_id,
+            'date_admitted' => date('M-j-Y g:i A'),
             'department_id' => $request->input('department'),
         ]);
 
@@ -258,7 +284,20 @@ class PatientController extends Controller
         foreach($pats as $patss)
         {
             $patient_id = $patss->id;
+            $patient_department = $patss->department_id;
         }
+
+        date_default_timezone_set('Asia/Singapore');
+
+        $history = new Patient_History([
+            'date' => date('M-j-Y g:i A'),
+            'patient_id' => $patient_id,
+            'by' => Auth::user()->id,
+            'type' => 'Enrolled',
+            'to_dep' => $patient_department,
+        ]);
+
+        $history->save();
 
         $emergency_people = new Emergency_Persons([
             'emergency_id' => $emer,
@@ -338,6 +377,8 @@ class PatientController extends Controller
             $address_id = $adds->id;
         }
 
+        date_default_timezone_set('Asia/Singapore');
+
         $patient = new Patients([
             'patient_id' => $pat,
             'fname' => $request->input('fname'),
@@ -354,6 +395,7 @@ class PatientController extends Controller
             'religion' => $request->input('religion'),
             'case' => $request->input('casetype'),
             'submission' => $request->input('type'),
+            'date_admitted' => date('M-j-Y g:i A'),
             'department_id' => $request->input('department'),
         ]);
 
@@ -375,7 +417,20 @@ class PatientController extends Controller
         foreach($pats as $patss)
         {
             $patient_id = $patss->id;
+            $patient_department = $patss->department_id;
         }
+
+        date_default_timezone_set('Asia/Singapore');
+
+        $history = new Patient_History([
+            'date' => date('M-j-Y g:i A'),
+            'patient_id' => $patient_id,
+            'by' => Auth::user()->id,
+            'type' => 'Enrolled',
+            'to_dep' => $patient_department,
+        ]);
+
+        $history->save();
 
         $patient_informant = new Patient_Informant([
             'informant_id' => $inf,
@@ -467,12 +522,29 @@ class PatientController extends Controller
 
         $transfer->save();
 
+
         $tranz = Transfer_Requests::with('transfer_departments')->where('transfer_id',$trans)->get();
 
         foreach($tranz as $transf)
         {
             $transf->transfer_id;
+            $to_department = $transf->transfer_department->department_name;
+            $from_department = $transf->transfer_departments->department_name;
         }
+
+        date_default_timezone_set('Asia/Singapore');
+
+        $history = new Patient_History([
+            'date' => date('M-j-Y g:i A'),
+            'patient_id' => $request->input('patientid'),
+            'by' => Auth::user()->id,
+            'type' => 'For Transfer',
+            'from_dep' => $request->input('patientdep'),
+            'to_dep' => $request->input('depid'),
+            'remarks' => $request->input('referral'),
+        ]);
+
+        $history->save();
 
         $allusers = Users::all();
 
@@ -484,29 +556,47 @@ class PatientController extends Controller
         return back();
     }
 
-    public function patientTransfer($id,$did,$tid)
+    public function patientTransfer($id,$did,$tid,$pid)
     {
-        Patients::where('id',$id)->update(['department_id' => $did]);
+
+        date_default_timezone_set('Asia/Singapore');
+
+        Patients::where('id',$id)->update(['department_id' => $did],['date_admitted' => date('M-j-Y')]);
+        Patients::where('id',$id)->update(['date_admitted' => date('M-j-Y g:i A')]);
         Transfer_Requests::where('transfer_id',$tid)->update(['status' => 'transfered']);
+        $notif = DB::table('notifications')->where('id',$pid)->update(['read_at' => date('Y-m-d')]);
+        
+        date_default_timezone_set('Asia/Singapore');
+
+        $nhistory = new Patient_History([
+            'date' => date('M-j-Y g:i A'),
+            'patient_id' => $id,
+            'by' => Auth::user()->id,
+            'type' => 'Enrolled',
+            'to_dep' => $did,
+        ]);
+
+        $nhistory->save();
 
         $pid = 0;
         $pat = Patients::where('id',$id)->get();
         $roles = User_roles::all();
         $deps = Departments::all();
         $users = Users::find(Auth::user()->id);
-        $transfer = Transfer_Requests::all();
+        $transfer = Transfer_Requests::where('transfer_id',$tid)->get();
+        $history = Patient_History::where('patient_id',$id)->get();
 
         Session::flash('alert-class', 'success'); 
         flash('Patient Enrolled', '')->overlay();
 
         if(Auth::user()->user_role()->first()->name == 'Superadmin'){
-            return view('superadmin.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfer',$transfer);
+            return view('superadmin.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfer',$transfer)->with('history',$history);
         }
         else if(Auth::user()->user_role()->first()->name == 'Admin'){
-            return view('admin.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfer',$transfer);
+            return view('admin.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfer',$transfer)->with('history',$history);
         }
         else if(Auth::user()->user_role()->first()->name == 'Social Worker'){
-            return view('socialworker.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfer',$transfer);
+            return view('socialworker.viewpatient')->with('roles' , $roles)->with('deps',$deps)->with('pat' ,$pat)->with('users',$users)->with('pid',$pid)->with('transfer',$transfer)->with('history',$history);
         }
     }
 }

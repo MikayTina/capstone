@@ -115,6 +115,8 @@ Route::group(['middleware' =>'auth'], function()
 
 	 Route::post('/deleteuser', "UserController@deleteuser");
 
+	 Route::get('/showdep_users/{did}/{rid}', "ViewController@showdepuser");
+
 	 Route::any('/addpatient', "PatientController@addpatient");
 
 	 Route::post('/refer', "PatientController@refer");
@@ -162,6 +164,22 @@ Route::group(['middleware' =>'auth'], function()
 
 	 Route::post('/patientTransfer', "PatientController@transferPatient");
 
+<<<<<<< HEAD
 	 Route::get('/transfer_patient_now/{id}/{did}/{tid}',"PatientController@patientTransfer");
 
+=======
+	 Route::get('/transfer_patient_now/{id}/{did}/{tid}/{pid}',"PatientController@patientTransfer");
+
+	 Route::any('/showemployees',"ViewController@showemployees");
+
+	 Route::any('/newemployee',"RegisterController@newemployee");
+
+	 Route::post('/create_employee',"RegisterController@create_employee");
+
+	 Route::post('/update_employeenow',"EmployeeController@update_employeenow");
+
+	 Route::post('/delete_employee', "EmployeeController@delete_employeenow");
+
+	 Route::any('/logs', "ViewController@showlogs");
+>>>>>>> 600cab594feb8db6b13cf6bbc56dd8a801ec984c
 });

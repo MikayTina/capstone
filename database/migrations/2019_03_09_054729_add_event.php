@@ -17,6 +17,7 @@ class AddEvent extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+<<<<<<< HEAD
              $table->string('venue');
             $table->date('start');
             $table->date('end');
@@ -25,6 +26,11 @@ class AddEvent extends Migration
             $table->time('end_time');
             $table->timestamps();
 
+=======
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->timestamps();
+>>>>>>> 600cab594feb8db6b13cf6bbc56dd8a801ec984c
         });
     }
 

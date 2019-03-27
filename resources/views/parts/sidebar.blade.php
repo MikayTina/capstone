@@ -42,15 +42,21 @@
          @endforeach
         </div>
       </li>
+      @if(Auth::user()->user_role()->first()->name == 'Superadmin')
        <li class="nav-item">
+<<<<<<< HEAD
         <a class="nav-link" href="{{URL::to('/showCalendar')}}">
           <i class="fas fa-fw fa-user"></i>
           <span>Calendar</span></a>
 
         <a class="nav-link" href="{{URL::to('/showpatients')}}">
+=======
+        <a class="nav-link" href="{{URL::to('/showemployees')}}">
+>>>>>>> 600cab594feb8db6b13cf6bbc56dd8a801ec984c
           <i class="fas fa-fw fa-users"></i>
           <span>Employees</span></a>
       </li>
+      @endif
       <li class="nav-item">
         <a class="nav-link" href="{{URL::to('/showpatients')}}">
           <i class="fas fa-fw fa-user"></i>
@@ -79,17 +85,31 @@
           <i class="fas fa-fw fa-list"></i>
           <span>Forms</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{URL::to('/logs')}}">
+          <i class="fas fa-fw fa-book"></i>
+          <span>System Logs</span></a>
+      </li>
     @else
       <li class="nav-item">
         <a class="nav-link" href="{{URL::to('/showpatients')}}">
           <i class="fas fa-fw fa-user"></i>
           <span>Patients</span></a>
       </li>
+      @if(Auth::user()->user_role()->first()->name == 'Social Worker')
       <li class="nav-item">
         <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>My Reports</span></a>
       </li>
+      @endif
+      @if(Auth::user()->user_role()->first()->name == 'Doctor')
+      <li class="nav-item">
+         <a class="nav-link" href="tables.html">
+          <i class="fas fa-fw fa-briefcase-medical"></i>
+          <span>My Appointments</span></a>
+      </li>
+      @endif
       <li class="nav-item">
         <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-list"></i>
