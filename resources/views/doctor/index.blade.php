@@ -25,4 +25,3 @@
       </div>
 
 @endsection
-s
