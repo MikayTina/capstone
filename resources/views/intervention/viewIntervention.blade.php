@@ -2,7 +2,7 @@
 @section('content')
 
         <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
+       <ol class="breadcrumb">
           <li class="breadcrumb-item">
             <a href="{{URL::to('/profile')}}">Dashboard</a>
           </li>

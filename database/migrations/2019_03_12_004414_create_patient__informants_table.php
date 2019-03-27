@@ -18,7 +18,7 @@ class CreatePatientInformantsTable extends Migration
             $table->string('informant_id');
             $table->string('name');
             $table->string('address');
-            $table->integer('contact');
+            $table->string('contact');
             $table->timestamps();
         });
     }

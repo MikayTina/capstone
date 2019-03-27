@@ -24,6 +24,7 @@ class CreatePatientsTable extends Migration
             $table->integer('birthorder')->nullable();
             $table->integer('address_id')->unsigned();
             $table->foreign('address_id')->references('id')->on('addresses');
+
             $table->string('contact')->nullable();
             $table->string('gender')->nullable();
             $table->string('civil_status');
@@ -31,6 +32,15 @@ class CreatePatientsTable extends Migration
             $table->string('religion')->nullable();
             $table->string('case')->nullable();
             $table->string('submission')->nullable();
+
+            $table->string('contact')->nullable();;
+            $table->string('gender')->nullable();;
+            $table->string('civil_status');
+            $table->string('nationality')->nullable();;
+            $table->string('religion')->nullable();;
+            $table->string('case')->nullable();;
+            $table->string('submission')->nullable();;
+ 
             $table->integer('department_id')->unsigned();
             $table->foreign('department_id')->references('id')->on('departments');
             $table->string('flag')->nullable();

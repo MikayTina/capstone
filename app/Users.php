@@ -11,7 +11,10 @@ class Users extends Model
     use Notifiable;
 
      protected $fillable = [
-        'fname','lname','username','password','pincode','contact','email', 'role', 'department',
+
+      //  'fname','lname','username','password','pincode','contact','email', 'role', 'department',
+
+        'user_id','fname','lname','username','password','contact','email', 'role', 'department',
     ];
 
     public function user_departments()

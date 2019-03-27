@@ -46,6 +46,8 @@ class MyNotifications extends Notification
             'user_id' => $this->user->id,
             'fname' => $this->user->fname,
             'lname' => $this->user->lname,
+            'department' => $this->user->user_departments->department_name,
+            'role' => $this->user->user_roles->name,
         ];
     }
 }

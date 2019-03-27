@@ -4,14 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Calendar;
-use App\Event;
+
+//use App\Event;
+
+use App\Events;
+
 
 class EventController extends Controller
 {
     public function index()
     {
         $events = [];
-        $data = Event::all();
+
+        //$data = Event::all();
+
+        $data = Events::all();
+        
         if($data->count()) {
             foreach ($data as $key => $value) {
                 $events[] = Calendar::event(

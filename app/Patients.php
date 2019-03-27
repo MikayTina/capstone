@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Patients extends Model
 {
+
+    use Notifiable;
+    
 	protected $fillable = [
 		'patient_id','fname','lname','mname','age','birthdate','birthorder','address_id','contact','gender','civil_status','nationality','religion','case','submission','department_id','flag',
 	];

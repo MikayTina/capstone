@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-
-    "content-hash": "5627292df357422d2249d04246ad978f",
-
-    "content-hash": "d26964355b31b88db1cb9c1fb0ac1a68",
-
+    "content-hash": "9113f25983e8a39ebd6a5ec2f84514f7",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1159,53 +1155,6 @@
                 "storage"
             ],
             "time": "2019-02-01T08:50:36+00:00"
-        },
-        {
-            "name": "maddhatter/laravel-fullcalendar",
-            "version": "v1.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/maddhatter/laravel-fullcalendar.git",
-                "reference": "6502ee3eee2d506d58fa37864af8f2003c9aaca1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/maddhatter/laravel-fullcalendar/zipball/6502ee3eee2d506d58fa37864af8f2003c9aaca1",
-                "reference": "6502ee3eee2d506d58fa37864af8f2003c9aaca1",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "~5.0",
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "MaddHatter\\LaravelFullcalendar\\ServiceProvider"
-                    ],
-                    "aliases": {
-                        "Calendar": "MaddHatter\\LaravelFullcalendar\\Facades\\Calendar"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "MaddHatter\\LaravelFullcalendar": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Shawn Tunney",
-                    "email": "shawn.tunney@gmail.com"
-                }
-            ],
-            "description": "Laravel helper for FullCalendar.io",
-            "time": "2017-09-18T17:54:18+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -3350,6 +3299,55 @@
             "time": "2019-01-29T11:11:52+00:00"
         },
         {
+            "name": "ybr-nx/laravel-mariadb",
+            "version": "1.0.18",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ybr-nx/laravel-mariadb.git",
+                "reference": "521b48e67cf08d6506835f36a0393c44ff06faf2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ybr-nx/laravel-mariadb/zipball/521b48e67cf08d6506835f36a0393c44ff06faf2",
+                "reference": "521b48e67cf08d6506835f36a0393c44ff06faf2",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "5.3.*|5.4.*|5.5.*|5.6.*|5.7.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "YbrNX\\MariaDB\\MariaDBServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "YbrNX\\MariaDB\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "EUPL-1.2"
+            ],
+            "authors": [
+                {
+                    "name": "Ingmar Aasoja",
+                    "email": "ingmar@aasoja.ee"
+                }
+            ],
+            "description": "Add MariaDB JSON select support to Laravel",
+            "keywords": [
+                "database",
+                "json",
+                "laravel",
+                "mariadb"
+            ],
+            "time": "2018-12-16T17:44:26+00:00"
+        },
+        {
             "name": "zendframework/zend-diactoros",
             "version": "1.8.6",
             "source": {
@@ -3688,6 +3686,53 @@
                 "test"
             ],
             "time": "2016-01-20T08:20:44+00:00"
+        },
+        {
+            "name": "maddhatter/laravel-fullcalendar",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maddhatter/laravel-fullcalendar.git",
+                "reference": "6502ee3eee2d506d58fa37864af8f2003c9aaca1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maddhatter/laravel-fullcalendar/zipball/6502ee3eee2d506d58fa37864af8f2003c9aaca1",
+                "reference": "6502ee3eee2d506d58fa37864af8f2003c9aaca1",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "MaddHatter\\LaravelFullcalendar\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Calendar": "MaddHatter\\LaravelFullcalendar\\Facades\\Calendar"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "MaddHatter\\LaravelFullcalendar": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shawn Tunney",
+                    "email": "shawn.tunney@gmail.com"
+                }
+            ],
+            "description": "Laravel helper for FullCalendar.io",
+            "time": "2017-09-18T17:54:18+00:00"
         },
         {
             "name": "mockery/mockery",

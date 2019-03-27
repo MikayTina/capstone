@@ -6,7 +6,11 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
+
   @yield('style')
+
+  <!--@yield('style')
+
 
   <title>DOH - Cebu Treatment and Rehabilitation Center for Females</title>
 
@@ -24,9 +28,6 @@
   <link href="{{asset('vendor/multi-select/css/multi-select.css')}}" rel="stylesheet" type="text/css">
 
   <link rel="stylesheet" type="text/css" href="{{asset('vendor/duallistbox/src/bootstrap-duallistbox.css')}}">
-
-
-
 
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
