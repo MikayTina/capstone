@@ -49,7 +49,7 @@ class LoginController extends Controller
 
 
        $roles = User_roles::all();
-       $deps = Departments::all(); 
+       $deps = Departments::all();
       
 
         //var_dump($request->input('password'));
@@ -110,9 +110,6 @@ class LoginController extends Controller
       }
       else if(Auth::user()->user_role()->first()->name == 'Nurse'){
          return view('socialworker.index')->with('roles',$roles)->with('deps',$deps)->with('users',$users);
-      }
-      else if(Auth::user()->user_role()->first()->name == 'Doctor'){
-         return view('doctor.index')->with('roles',$roles)->with('deps',$deps)->with('users',$users);
       }
       
     }

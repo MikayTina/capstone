@@ -23,7 +23,6 @@ class InterventionController extends Controller
     public function showintervention()
      {
 
-<<<<<<< HEAD
         
         $roles = User_roles::all();
         $deps = Departments::all();
@@ -35,16 +34,6 @@ class InterventionController extends Controller
 
         if(Auth::user()->user_role()->first()->name == 'Superadmin'){
             return view('intervention.viewIntervention')->with('roles',$roles)->with('deps',$deps)->with('inter', $inter)->with('users',$users);
-=======
-    
-        $roles = User_roles::all();
-        $deps = Departments::all();
-        $inter = Interventions::where('parent', 0)->get();
-
-
-        if(Auth::user()->user_role()->first()->name == 'Superadmin'){
-            return view('intervention.viewIntervention')->with('roles',$roles)->with('deps',$deps)->with('inter', $inter);
->>>>>>> 600cab594feb8db6b13cf6bbc56dd8a801ec984c
         }
         else{
             return abort(404);
@@ -58,21 +47,13 @@ class InterventionController extends Controller
     
         $roles = User_roles::all();
         $deps = Departments::all();
-<<<<<<< HEAD
          $users = Users::find(Auth::user()->id);
-=======
->>>>>>> 600cab594feb8db6b13cf6bbc56dd8a801ec984c
      //   $inter = Interventions::all();
 
         $inter = Interventions::where('parent', 0)->get();
 
-<<<<<<< HEAD
         if(Auth::user()->user_role()->first()->name == 'Superadmin'){
             return view('intervention.addIntervention')->with('roles',$roles)->with('deps',$deps)->with('inter', $inter)->with('users',$users);
-=======
-    if(Auth::user()->role == 1){
-            return view('intervention.addIntervention')->with('roles',$roles)->with('deps',$deps)->with('inter', $inter);
->>>>>>> 600cab594feb8db6b13cf6bbc56dd8a801ec984c
         }
         else{
             return abort(404);

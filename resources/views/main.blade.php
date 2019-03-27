@@ -3,9 +3,9 @@
 
   @include('parts.head')
 
-  @include('parts.loader')
-
 <body id="page-top">
+
+  <div class="loader"></div>
 
     @include('parts.nav')
 
@@ -17,7 +17,6 @@
     <div id="content-wrapper">
 
       <div class="container-fluid">
-        
 
        @yield('content')
         <!-- Area Chart Example

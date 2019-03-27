@@ -88,7 +88,7 @@
                 @foreach($users->readNotifications as $user)
                     @if($user->type == 'App\Notifications\MySecondNotification')
                 <div style="border:thin black">
-                <p style="margin-top: 5px;font-size: 16px;margin-left: 20px"><a href="{{URL::to('/viewpatient/'.$user->data['patient_id'])}}" style="color:black">A patient has been added to {{$user->data['department']}} Department</a></p>
+                <p style="margin-top: 5px;font-size: 16px;margin-left: 20px"><a href="{{URL::to('/viewpatients/'.$user->data['patient_id'].'/'.$user->id)}}" style="color:black">A patient has been added to {{$user->data['department']}} Department</a></p>
                 <p style="margin-left: 170px;font-size: 12px">{{$user->created_at->diffForHumans()}}</p>
                 <div style="border:solid 1px rgba(0, 0, 0, 0.125)"></div>
                 </div>
@@ -105,7 +105,7 @@
                     @if($user->type == 'App\Notifications\MySecondNotification')
                       @if(Auth::user()->user_department->department_name == $user->data['department'])
                 <div style="border:thin black;background-color: lightgray">
-                <p style="margin-top: 5px;font-size: 16px;margin-left: 20px"><a href="{{URL::to('/viewpatientz/'.$user->data['patient_id'].'/'.$user->id)}}" style="color:black">A patient has been added to {{$user->data['department']}} Department</a></p>
+                <p style="margin-top: 5px;font-size: 16px;margin-left: 20px"><a href="{{URL::to('/viewpatient/'.$user->data['patient_id'])}}" style="color:black">A patient has been added to {{$user->data['department']}} Department</a></p>
                 <p style="margin-left: 170px;font-size: 12px">{{$user->created_at->diffForHumans()}}</p>
                 <div style="border:solid 1px rgba(0, 0, 0, 0.125)"></div>
                 </div>
@@ -116,7 +116,7 @@
                     @if($user->type == 'App\Notifications\MySecondNotification')
                       @if(Auth::user()->user_department->department_name == $user->data['department'])
                 <div style="border:thin black">
-                <p style="margin-top: 5px;font-size: 16px;margin-left: 20px"><a href="{{URL::to('/viewpatient/'.$user->data['patient_id'])}}" style="color:black">A patient has been added to {{$user->data['department']}} Department</a></p>
+                <p style="margin-top: 5px;font-size: 16px;margin-left: 20px"><a href="{{URL::to('/viewpatients/'.$user->data['patient_id'].'/'.$user->id)}}" style="color:black">A patient has been added to {{$user->data['department']}} Department</a></p>
                 <p style="margin-left: 170px;font-size: 12px">{{$user->created_at->diffForHumans()}}</p>
                 <div style="border:solid 1px rgba(0, 0, 0, 0.125)"></div>
                 </div>
@@ -155,7 +155,7 @@
                 <div style="border:thin black;background-color: lightgray">
                 <p style="margin-top: 5px;font-size: 16px;margin-left: 50px">A patient has been transfered from {{$user->data['from_department']}} Department to {{$user->data['to_department']}} Department</p>
                 <p style="margin-left: 180px;font-size: 12px">{{$user->created_at->diffForHumans()}}</p>
-                <p style="margin-left: 150px"><a href="{{URL::to('/viewpatientz/'.$user->data['patient_id'].'/'.$user->id)}}"><button class="btn btn-primary" style="margin-left: 30px">View</button></a>
+                <p style="margin-left: 150px"><a href="{{URL::to('/viewpatients/'.$user->data['patient_id']. '/'.$user->id.'/'.$user->data['transfer_id'])}}"><button class="btn btn-primary" style="margin-left: 30px">View</button></a>
                 <div style="border:solid 1px rgba(0, 0, 0, 0.125)"></div>
                 </div>
                       @endif
@@ -168,7 +168,7 @@
                 <div style="border:thin black">
                 <p style="margin-top: 5px;font-size: 16px;margin-left: 50px">A patient has been transfered from {{$user->data['from_department']}} Department to {{$user->data['to_department']}} Department</p>
                 <p style="margin-left: 185px;font-size: 12px">{{$user->created_at->diffForHumans()}}</p>
-                <p style="margin-left: 150px"><a href="{{URL::to('/viewpatient/'.$user->data['patient_id'])}}"><button class="btn btn-primary" style="margin-left: 30px">View</button></a>
+                <p style="margin-left: 150px"><a href="{{URL::to('/viewpatients/'.$user->data['patient_id']. '/'.$user->id.'/'.$user->data['transfer_id'])}}"><button class="btn btn-primary" style="margin-left: 30px">View</button></a>
                 <div style="border:solid 1px rgba(0, 0, 0, 0.125)"></div>
                 </div>
                   @endif
@@ -181,7 +181,7 @@
                     @if(Auth::user()->user_department->department_name == $user->data['to_department'])
                     @if($trans->status != 'transfered')
                 <div style="border:thin black;background-color: lightgray">
-                <p style="margin-top: 0px;font-size: 16px;margin-left: 20px">A patient has requested to transfer from {{$user->data['from_department']}} Department</p>
+                <p style="margin-top: 20px;font-size: 16px;margin-left: 20px">A patient has requested to transfer from {{$user->data['from_department']}} Department</p>
                 <p style="margin-left: 185px;font-size: 12px">{{$user->created_at->diffForHumans()}}</p>
                 <p style="margin-left: 90px"><a href="{{URL::to('/viewpatients/'.$user->data['patient_id']. '/'.$user->id.'/'.$user->data['transfer_id'])}}"><button class="btn btn-primary" style="margin-left: 30px">View</button></a><button class="btn btn-success" style="margin-left: 5px" value="Submit">Approve</button><button class="btn btn-danger" style="margin-left: 5px" value="Submit">Decline</button></p>
                 <div style="border:solid 1px rgba(0, 0, 0, 0.125)"></div>
@@ -190,7 +190,7 @@
                 <div style="border:thin black;background-color: lightgray">
                 <p style="margin-top: 5px;font-size: 16px;margin-left: 50px">A patient has been transfered from {{$user->data['from_department']}} Department to {{$user->data['to_department']}} Department</p>
                 <p style="margin-left: 180px;font-size: 12px">{{$user->created_at->diffForHumans()}}</p>
-                <p style="margin-left: 150px"><a href="{{URL::to('/viewpatientz/'.$user->data['patient_id'].'/'.$user->id)}}"><button class="btn btn-primary" style="margin-left: 30px">View</button></a>
+                <p style="margin-left: 150px"><a href="{{URL::to('/viewpatients/'.$user->data['patient_id']. '/'.$user->id.'/'.$user->data['transfer_id'])}}"><button class="btn btn-primary" style="margin-left: 30px">View</button></a>
                 <div style="border:solid 1px rgba(0, 0, 0, 0.125)"></div>
                 </div>
                       @endif

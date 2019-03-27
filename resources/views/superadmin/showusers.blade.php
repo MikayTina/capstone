@@ -1,14 +1,14 @@
 @extends('main')
 @section('content')
  <style>
+   
+  th {
+  text-align: inherit;
+  background-color: #212529;
+  color:white;
+}
 
-      th {
-      text-align: inherit;
-      background-color: #343a40;
-      color:white;
-      }
-
-</style>
+ </style>
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
@@ -19,7 +19,7 @@
 
         <!-- Icon Cards-->
         <div class="row" style="margin-left: 5px;margin-bottom: 0px">
-          <div class="col-xl-8 col-sm-9 mb-10" style="height: 6rem;">
+          <div class="col-xl-12 col-sm-9 mb-10" style="height: 6rem;">
             <div class="mb-3 text-black o-hidden h-100">
               <div class="card-body">
                   <p style="font-size: 50px;margin-top: 0px">{{$rolex->name}}s</p> 
@@ -29,13 +29,6 @@
 
             </div>
           </div>
-           <div class="col-xl-4 col-sm-9 mb-10">
-            <div class="mb-3 text-black o-hidden h-100">
-              <div class="card-body">
-                  <a style="color:white" href="{{URL::to('/create_user/'.$rolex->id)}}"><button class="btn btn-dark btn-block" style="height: 50px; width:200px;float: right;margin-top: 0px;margin-left: 0px">New {{$rolex->name}}</button></a>
-              </div>
-          </div>
-        </div>
         </div>
          <div class="card-body" style="margin-left: 10px">
             <div class="table-responsive">
@@ -63,7 +56,7 @@
                     <td style="text-align: center"><button class="btn btn-success" style="margin-right: 10px">View</button><button class="btn btn-primary" style="margin-right: 10px" data-toggle="modal" data-target="#editModal" data-userid="{{$uroles->id}}" data-fname="{{$uroles->fname}}" data-lname="{{$uroles->lname}}" data-uname="{{$uroles->username}}" data-email="{{$uroles->email}}" data-contact="{{$uroles->contact}}" data-department="{{$uroles->department}}" data-userid="{{$uroles->id}}">Edit</button><button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" data-userid="{{$uroles->id}}">Delete</button></td>
                   </tr>
                 @endforeach
-                </tbody>
+                </tbody>,
               </table>
             </div>
           </div>

@@ -13,7 +13,6 @@ use DB;
 use App\Users;
 use App\User_roles;
 use App\Departments;
-use App\Transfer_Requests;
 use Hash;
 use Session;
 
@@ -24,13 +23,12 @@ class UserController extends Controller
 		$roles = User_roles::all();
 		$deps = Departments::all();
 		$users = Users::find(Auth::user()->id);
-		$transfer = Transfer_Requests::all();
 
 		if(Auth::user()->user_role()->first()->name == 'Superadmin'){
-			return view('superadmin.chooseuser')->with('roles',$roles)->with('deps',$deps)->with('users',$users)->with('transfer',$transfer);
+			return view('superadmin.chooseuser')->with('roles',$roles)->with('deps',$deps)->with('users',$users);
 		}
 		elseif(Auth::user()->user_role()->first()->name == 'Admin'){
-			return view('admin.chooseuser')->with('roles',$roles)->with('deps',$deps)->with('users',$users)->with('transfer',$transfer);
+			return view('admin.chooseuser')->with('roles',$roles)->with('deps',$deps)->with('users',$users);
 		}
 		else{
 			return abort(404);
@@ -43,13 +41,12 @@ class UserController extends Controller
 		$rolex = User_roles::find($id);
 		$deps = Departments::all();
 		$users = Users::find(Auth::user()->id);
-		$transfer = Transfer_Requests::all();
 
 		if(Auth::user()->user_role()->first()->name == 'Superadmin'){
-			return view('superadmin.createuser')->with('roles',$roles)->with('deps',$deps)->with('rolex',$rolex)->with('users',$users)->with('transfer',$transfer);
+			return view('superadmin.createuser')->with('roles',$roles)->with('deps',$deps)->with('rolex',$rolex)->with('users',$users);;
 		}
 		elseif(Auth::user()->user_role()->first()->name == 'Admin'){
-			return view('admin.createuser')->with('roles',$roles)->with('deps',$deps)->with('rolex',$rolex)->with('users',$users)->with('transfer',$transfer);
+			return view('admin.createuser')->with('roles',$roles)->with('deps',$deps)->with('rolex',$rolex)->with('users',$users);;
 		}
 		else{
 			return abort(404);
@@ -61,10 +58,9 @@ class UserController extends Controller
 		$roles = User_roles::all();
 		$deps = Departments::all();
 		$users = Users::find(Auth::user()->id);
-		$transfer = Transfer_Requests::all();
 
 		if(Auth::user()->user_role()->first()->name == 'Superadmin'){
-			return view('superadmin.createrole')->with('roles',$roles)->with('deps',$deps)->with('users',$users)->with('transfer',$transfer);
+			return view('superadmin.createrole')->with('roles',$roles)->with('deps',$deps)->with('users',$users);;
 		}
 		else{
 			return abort(404);
@@ -76,10 +72,9 @@ class UserController extends Controller
 		$roles = User_roles::all();
 		$deps = Departments::all();
 		$users = Users::find(Auth::user()->id);
-		$transfer = Transfer_Requests::all();
 
 		if(Auth::user()->user_role()->first()->name == 'Superadmin'){
-			return view('superadmin.postcreatedep')->with('roles',$roles)->with('deps',$deps)->with('users',$users)->with('transfer',$transfer);
+			return view('superadmin.postcreatedep')->with('roles',$roles)->with('deps',$deps)->with('users',$users);;
 		}
 		else{
 			return abort(404);
@@ -91,10 +86,9 @@ class UserController extends Controller
 		$roles = User_roles::all();
 		$deps = Departments::all();
 		$users = Users::find(Auth::user()->id);
-		$transfer = Transfer_Requests::all();
 
 		if(Auth::user()->user_role()->first()->name == 'Superadmin'){
-			return view('superadmin.createdep')->with('roles',$roles)->with('deps',$deps)->with('users',$users)->with('transfer',$transfer);
+			return view('superadmin.createdep')->with('roles',$roles)->with('deps',$deps)->with('users',$users);
 		}
 		else{
 			return abort(404);

@@ -34,10 +34,9 @@ class CalendarController extends Controller
 
       // return view('calendar.viewCalendar')->with('roles',$roles)->with('deps',$deps);
        $users = Users::find(Auth::user()->id);
-       $transfer = Transfer_Requests::all();
       
 
-       return view('calendar.viewCalendar')->with('roles',$roles)->with('deps',$deps)->with('users',$users)->with('transfer',$transfer);;
+       return view('calendar.viewCalendar')->with('roles',$roles)->with('deps',$deps)->with('users',$users);
 
    }
 

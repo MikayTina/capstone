@@ -1,11 +1,5 @@
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<<<<<<< HEAD
-=======
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
-
-  <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
->>>>>>> 600cab594feb8db6b13cf6bbc56dd8a801ec984c
 
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -60,11 +54,13 @@
     $('#flash-overlay-modal').modal();
     </script>
     
-  <script>
-    $(window).on('load',function() {
-      $('#loading').fadeOut('slow');
-    });
-</script>
+  <script type="text/javascript">
+  
+    $(window).load(function() {
+      $(".loader").fadeOut("slow");
+      })
+  
+  </script>
 
 
   @yield('script')
@@ -94,30 +90,6 @@
     modal.find('.modal-body #department').val(department);
   })
 
-   $('#editemployeeModal').on('show.bs.modal', function (event) {
-
-    var button = $(event.relatedTarget)
-
-    var userid = button.data('userid')
-    var fname = button.data('fname')
-    var lname = button.data('lname')
-    var mname = button.data('mname')
-    var email = button.data('email')
-    var contact = button.data('contact')
-    var designation = button.data('designation')
-    var department = button.data('department')
-    var modal = $(this)
-
-    modal.find('.modal-body #userid').val(userid);
-    modal.find('.modal-body #fname').val(fname);
-    modal.find('.modal-body #lname').val(lname);
-    modal.find('.modal-body #mname').val(mname);
-    modal.find('.modal-body #email').val(email);
-    modal.find('.modal-body #contact').val(contact);
-    modal.find('.modal-body #designation').val(designation);
-    modal.find('.modal-body #department').val(department);
-  })
-
   $('#deleteModal').on('show.bs.modal', function (event) {
 
     var button = $(event.relatedTarget)
@@ -126,16 +98,6 @@
     var modal = $(this)
 
     modal.find('.modal-body #user_id').val(user_id);
-  })
-
-  $('#deleteemployeeModal').on('show.bs.modal', function (event) {
-
-    var button = $(event.relatedTarget)
-
-    var employee_id = button.data('employee_id')
-    var modal = $(this)
-
-    modal.find('.modal-body #employee_id').val(employee_id);
   })
 
   $('#deleteRole').on('show.bs.modal', function (event) {
