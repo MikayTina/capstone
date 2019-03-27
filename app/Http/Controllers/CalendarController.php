@@ -17,6 +17,7 @@ use App\Departments;
 use App\Events;
 use App\Patients;
 use App\Interventions;
+use App\Transfer_Requests;
 use Hash;
 use Session;
 
@@ -29,9 +30,10 @@ class CalendarController extends Controller
        $roles = User_roles::all();
        $deps = Departments::all();
        $users = Users::find(Auth::user()->id);
+       $transfer = Transfer_Requests::all();
       
 
-       return view('calendar.viewCalendar')->with('roles',$roles)->with('deps',$deps)->with('users',$users);
+       return view('calendar.viewCalendar')->with('roles',$roles)->with('deps',$deps)->with('users',$users)->with('transfer',$transfer);;
 
    }
 
